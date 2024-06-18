@@ -6,40 +6,31 @@
     <title>FB AUTO REACT</title>
     <link rel="icon" type="image/jpg" href="https://i.imgur.com/LYGQz6s.jpeg">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: pointer;
+            background-color: #333;
+            color: #fff;
         }
 
         .container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            margin: 20px auto;
             padding: 20px;
-            width: 400px;
-            max-width: 100%;
-            margin: 20px;
-        }
-
-        .logo {
-            display: block;
-            margin: 0 auto 20px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
         }
 
         h1 {
+            color: #ffa500;
             text-align: center;
-            margin-bottom: 20px;
-            color: #1877f2;
         }
 
         form {
@@ -49,7 +40,7 @@
 
         label {
             margin-bottom: 5px;
-            color: #333;
+            color: #fff;
         }
 
         input, select {
@@ -62,24 +53,43 @@
 
         button {
             padding: 10px;
-            background-color: #1877f2;
+            background-color: #ffa500;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            margin-bottom: 10px;
         }
 
         button:hover {
-            background-color: #166fe5;
+            background-color: #ff7f00;
         }
 
-        #response {
+        .info-box {
+            background-color: rgba(255,255,255,0.2);
+            border: 1px solid #ffa500;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .info-box h2 {
+            color: #ffa500;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #fff;
+            margin: 5px 0;
+        }
+
+        .response {
             margin-top: 20px;
             text-align: center;
             font-weight: bold;
             font-size: 18px;
-            color: #333;
         }
 
         .error {
@@ -90,79 +100,32 @@
             color: green;
         }
 
-        .reaction {
-            font-size: 24px;
-            cursor: pointer;
-            margin: 5px;
-        }
-
-        .info-box {
-            background-color: #e7f3ff;
-            border: 1px solid #b3d7ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .info-box h2 {
-            margin: 0;
-            color: #1877f2;
-        }
-
-        .info-box p {
-            margin: 10px 0;
-            color: #333;
-        }
-
-        .fb-link {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .fb-link a {
+        .cokie, .sms, .fb-link a {
+            display: inline-block;
             padding: 10px 15px;
-            background-color: #4267B2;
+            background-color: #ffa500;
             color: white;
             text-decoration: none;
             border-radius: 4px;
-            display: inline-block;
-        }
-
-        .fb-link a:hover {
-            background-color: #365899;
-        }
-
-        .cokie {
-            display: inline-block;
-            padding: 10px 10px;
-            background-color: #4267B2;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
             font-size: 16px;
-            margin: 0px;
+            margin: 5px 0;
+            text-align: center;
         }
 
-        .cokie:hover {
-            background-color: #166fe5;
+        .cokie:hover, .sms:hover, .fb-link a:hover {
+            background-color: #ff7f00;
         }
-        
+
         .sms {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4267B2;
-            color: white;
-            border: none;
             cursor: pointer;
-            border-radius: 5px;
-         }
+            border: none;
+        }
 
-         .sms:hover {
-             background-color: #166fe5;
-         }
-
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -188,7 +151,7 @@
             
             <button type="submit">Send Reaction</button>
         </form>
-        <div id="response"></div>
+        <div id="response" class="response"></div>
         <center>
         <a href="cokie.html" class="cokie">COKIE GETTER</a>
         <button class="sms" onclick="window.location.href='https://sms-bomber.glitch.me/'">SMS BOMBER</button>
@@ -218,7 +181,7 @@
 
             const responseElement = document.getElementById('response');
             responseElement.textContent = 'Sending reaction...';
-            responseElement.className = '';
+            responseElement.className = 'response';
 
             try {
                 const response = await fetch('/sendreact', {
