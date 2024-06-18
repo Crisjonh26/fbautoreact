@@ -6,26 +6,35 @@
     <title>FB AUTO REACT</title>
     <link rel="icon" type="image/jpg" href="https://i.imgur.com/LYGQz6s.jpeg">
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             font-family: Arial, sans-serif;
+            background-color: #333;
             margin: 0;
             padding: 0;
-            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             color: #fff;
+            text-align: pointer;
         }
-
+        
         .container {
-            width: 90%;
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
             background-color: rgba(255,255,255,0.1);
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            padding: 20px;
+            width: 400px;
+            max-width: 100%;
+            margin: 20px;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
         }
 
         h1 {
@@ -66,6 +75,27 @@
             background-color: #ff7f00;
         }
 
+        #response {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .reaction {
+            font-size: 24px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
         .info-box {
             background-color: rgba(255,255,255,0.2);
             border: 1px solid #ffa500;
@@ -83,21 +113,6 @@
         .info-box p {
             color: #fff;
             margin: 5px 0;
-        }
-
-        .response {
-            margin-top: 20px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .error {
-            color: red;
-        }
-
-        .success {
-            color: green;
         }
 
         .cokie, .sms, .fb-link a {
@@ -126,6 +141,7 @@
                 padding: 10px;
             }
         }
+
     </style>
 </head>
 <body>
@@ -151,13 +167,13 @@
             
             <button type="submit">Send Reaction</button>
         </form>
-        <div id="response" class="response"></div>
+        <div id="response"></div>
         <center>
         <a href="cokie.html" class="cokie">COKIE GETTER</a>
         <button class="sms" onclick="window.location.href='https://sms-bomber.glitch.me/'">SMS BOMBER</button>
         </center>
         <div class="info-box">
-            <p>Version: 1.0.2</p>
+            <p>Version: 2.0</p>
             <p>Welcome to the facebook auto reaction Made by joshua Apostol! This tool allows you to send reactions to fb posts</p>
             <h2>HOW TO USE</h2>
             <p>➡️USE DUMMY ACCOUNT</p>
@@ -166,10 +182,12 @@
             <p>➡️USE COKIE DOUGH ENTENSION</p>
             <p>➡️WAIT FOR MORE UPDATE...</p>
         </div>
+        <center>
         <div class="fb-link">
             <p>visit the developer and message to report any bug's you encountered</p>
             <a href="https://www.facebook.com/profile.php?id=100088690249020" target="_blank">DEVELOPER FACEBOOK</a>
         </div>
+        </center>
     </div>
     <script>
         document.getElementById('reactForm').addEventListener('submit', async (event) => {
@@ -181,7 +199,7 @@
 
             const responseElement = document.getElementById('response');
             responseElement.textContent = 'Sending reaction...';
-            responseElement.className = 'response';
+            responseElement.className = '';
 
             try {
                 const response = await fetch('/sendreact', {
