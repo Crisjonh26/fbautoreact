@@ -189,9 +189,23 @@
         </div>
         </center>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script>
         document.getElementById('reactForm').addEventListener('submit', async (event) => {
             event.preventDefault();
+
+            window.onload = function() {
+            Swal.fire({
+                title: 'FB AUTO REACT!',
+                text: 'welcome to our auto fb react version 2.0 please enjoy this app',
+                imageUrl: 'ic_launcher.png',
+                imageWidth: 100,
+                imageHeight: 100,
+                imageAlt: 'Custom Logo',
+                footer: 'Made by Joshua Apostol',
+                confirmButtonText: 'OK'
+            });
+            }
 
             const link = document.getElementById('link').value;
             const type = document.getElementById('type').value;
