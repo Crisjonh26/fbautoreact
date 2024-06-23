@@ -238,42 +238,45 @@
         </div>
     </div>
     <script>
-        document.getElementById('reactForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
+    document.getElementById('reactForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-            const link = document.getElementById('link').value;
-            const type = document.getElementById('type').value;
-            const cookie = document.getElementById('cookie').value;
+        const link = document.getElementById('link').value;
+        const type = document.getElementById('type').value;
+        const cookieInput = document.getElementById('cookie');
 
-            const responseElement = document.getElementById('response');
-            responseElement.textContent = 'Sending reaction...';
-            responseElement.className = '';
+        const cookie = cookieInput.value;
 
-            try {
-                const response = await fetch('/sendreact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ link, type, cookie })
-                });
+        const responseElement = document.getElementById('response');
+        responseElement.textContent = 'Sending reaction...';
+        responseElement.className = '';
 
-                const result = await response.json();
-                if (result.error) {
-                    responseElement.textContent = `Error: ${result.error}`;
-                    responseElement.className = 'error';
-                } else if (result.cookieError) {
-                    responseElement.textContent = 'Invalid cookie. Please check your cookie and try again.';
-                    responseElement.className = 'error';
-                } else {
-                    responseElement.textContent = result.message;
-                    responseElement.className = 'success';
-                }
-            } catch (error) {
-                responseElement.textContent = 'An error occurred while sending the reaction. Please try again later.';
+        try {
+            const response = await fetch('/sendreact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ link, type, cookie })
+            });
+
+            const result = await response.json();
+            if (result.error) {
+                responseElement.textContent = `Error: ${result.error}`;
                 responseElement.className = 'error';
+            } else if (result.cookieError) {
+                responseElement.textContent = 'Invalid cookie. Please check your cookie and try again.';
+                responseElement.className = 'error';
+            } else {
+                responseElement.textContent = result.message;
+                responseElement.className = 'success';
+                cookieInput.value = '';
             }
-        });
-    </script>
+        } catch (error) {
+            responseElement.textContent = 'An error occurred while sending the reaction. Please try again later.';
+            responseElement.className = 'error';
+        }
+    });
+</script>
 </body>
 </html>
