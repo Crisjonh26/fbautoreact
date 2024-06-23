@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.post('/sendreact', (req, res) => {
     const { link, type, cookie } = req.body;
-    const senderID = 'some_unique_identifier'; // Use session or token to identify the user
+    const senderID = 'some_unique_identifier';
 
     if (cooldowns.has(senderID)) {
         const cooldown = cooldowns.get(senderID);
@@ -20,7 +20,7 @@ app.post('/sendreact', (req, res) => {
         return res.json({ error: `Please wait ${timeLeft.toFixed(1)} more seconds before reusing the sendreact command.` });
     }
 
-    cooldowns.set(senderID, Date.now() + 50000); // Cooldown for 50 seconds (50000 milliseconds)
+    cooldowns.set(senderID, Date.now() + 50000); 
 
     setTimeout(() => {
         cooldowns.delete(senderID);
