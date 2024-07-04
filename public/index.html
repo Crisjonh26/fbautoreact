@@ -3,34 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NASH FB AUTO REACT</title>
-    <link rel="icon" type="image/jpg" href="https://i.imgur.com/LYGQz6s.jpeg">
+    <title>AUTO REACT</title>
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-30px);
-            }
-            60% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a2e;
+            background-color: #0c1022;
             color: #fff;
             margin: 0;
             padding: 0;
@@ -42,30 +19,30 @@
         }
 
         .container {
-            background-color: #16213e;
+            background-color: #0c1022;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             padding: 30px;
             width: 400px;
             max-width: 90%;
             text-align: center;
-            animation: fadeIn 2s ease-in-out;
         }
 
         .intro {
             font-size: 30px;
             font-weight: bold;
-            color: #007bff;
-            animation: slideIn 1s ease-in-out;
             margin-bottom: 20px;
+            background-image: linear-gradient(to right,#FF0000,#FF7F00,#FFFF00,#00FF00,#0000FF,#4B0082,#9400D3);
+           width: 100%;
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+           animation: move 80s linear infinite;
         }
-
-        h1 {
-            margin-bottom: 20px;
-            color: #00aaff;
-            font-size: 24px;
-            font-weight: bold;
-            animation: bounce 1s ease-in-out;
+        
+        @keyframes move {
+          to{
+            background-position: 4500vh;
+          }
         }
 
         form {
@@ -82,11 +59,11 @@
         input, select {
             padding: 12px;
             margin-bottom: 15px;
-            border: 1px solid #ccc;
+            border: 1px solid #eee;
             border-radius: 6px;
             box-sizing: border-box;
             transition: border-color 0.3s;
-            background-color: #1f4068;
+            background-color: #352e38;
             color: #fff;
         }
 
@@ -122,26 +99,6 @@
 
         .success {
             color: #4cff4c;
-        }
-
-        .info-box {
-            background-color: #0f3460;
-            border: 1px solid #cce5ff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            text-align: center;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .info-box h2 {
-            margin: 0 0 10px 0;
-            color: #00aaff;
-        }
-
-        .info-box p {
-            margin: 10px 0;
-            color: #ccc;
         }
 
         .fb-link a {
@@ -180,7 +137,7 @@
             padding: 10px 20px;
             font-size: 16px;
             background-color: #00aaff;
-            color: white;
+            color: #ccc;
             border: none;
             cursor: pointer;
             border-radius: 6px;
@@ -195,8 +152,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="intro">NASH FB AUTO REACT</div>
-        <h1>lorem îpsum</h1>
+        <div class="intro">
+          <p>FB AUTO REACT</p>
+        </div>
         <form id="reactForm">
             <label for="link">Post Link:</label>
             <input type="text" id="link" name="link" required>
@@ -215,26 +173,9 @@
             <label for="cookie">Cookie:</label>
             <input type="text" id="cookie" name="cookie" required>
             
-            <button type="submit">Send Reaction</button>
+            <button type="submit">Send React</button>
         </form>
         <div id="response"></div>
-        <div>
-            <a href="https://simple-portfolio-mauve.vercel.app/" class="cokie">PORFOLIO😑</a>
-            <a href="https://nash-rahh.onrender.com" class="cokie">FB AUTOBOT</a>
-        </div>
-        <div class="info-box">
-            <p>Version: 2.0.1</p>
-            <p>Welcome to the Facebook auto reaction tool made by joshua Apostol! This tool allows you to send reactions to FB posts.</p>
-            <h2>HOW TO USE</h2>
-            <p>➡️ Use a dummy account</p>
-            <p>➡️ Get the cookie of the dummy account</p>
-            <p>➡️ Get a cookie on the Kiwi browser extension</p>
-            <p>➡️ Use the Cookie Dough extension</p>
-            <p>➡️ Wait for more updates...</p>
-        </div>
-        <div class="fb-link">
-            <p>Visit the developer and message to report any bugs you encounter</p>
-            <a href="https://www.facebook.com/profile.php?id=100088690249020" target="_blank">CONTACT DEVELOPER</a>
         </div>
     </div>
     <script>
